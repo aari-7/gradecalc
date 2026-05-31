@@ -7,219 +7,92 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --border: #1e1e2e;
-    --accent: #4f8cff;
-    --accent2: #a259ff;
-    --text: #e8e8f0;
-    --muted: #555570;
-    --green: #22d98a;
-    --red: #ff5f7e;
-    --yellow: #ffd166;
+    --bg: #0a0a0f; --surface: #111118; --border: #1e1e2e;
+    --accent: #4f8cff; --accent2: #a259ff; --text: #e8e8f0;
+    --muted: #555570; --green: #22d98a; --red: #ff5f7e; --yellow: #ffd166;
   }
-
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
     background-image: radial-gradient(ellipse at 20% 20%, rgba(79,140,255,0.06) 0%, transparent 60%),
                       radial-gradient(ellipse at 80% 80%, rgba(162,89,255,0.06) 0%, transparent 60%);
   }
-
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 32px;
-    width: 100%;
-    max-width: 420px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 36px 32px; width: 100%; max-width: 460px;
     box-shadow: 0 24px 64px rgba(0,0,0,0.5);
   }
-
   .title {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
+    font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
-
-  .subtitle {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 28px;
-    letter-spacing: 0.5px;
-  }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-
-  .inputs-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .input-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    width: 78px;
-    flex-shrink: 0;
-  }
-
+  .subtitle { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .inputs-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .input-row { display: flex; align-items: center; gap: 8px; }
+  .input-tag { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); width: 52px; flex-shrink: 0; }
   .weight-badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    background: rgba(79,140,255,0.12);
-    color: var(--accent);
-    border: 1px solid rgba(79,140,255,0.2);
-    border-radius: 6px;
-    padding: 2px 7px;
-    width: 44px;
-    text-align: center;
-    flex-shrink: 0;
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    background: rgba(79,140,255,0.12); color: var(--accent);
+    border: 1px solid rgba(79,140,255,0.2); border-radius: 6px;
+    padding: 2px 7px; width: 44px; text-align: center; flex-shrink: 0;
   }
-
+  .slash { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 16px; flex-shrink: 0; }
+  .pct-display {
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent);
+    width: 46px; text-align: right; flex-shrink: 0;
+  }
   input[type="number"] {
-    flex: 1;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    padding: 9px 13px;
-    outline: none;
-    transition: border-color 0.2s;
-    -moz-appearance: textfield;
+    flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    color: var(--text); font-family: 'Space Mono', monospace; font-size: 14px;
+    padding: 9px 10px; outline: none; transition: border-color 0.2s;
+    -moz-appearance: textfield; min-width: 0;
   }
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
   input[type="number"]:focus { border-color: var(--accent); }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 20px 0;
-  }
-
-  .target-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-
-  .target-label {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-    flex: 1;
-  }
-
-  .target-input {
-    width: 80px;
-    flex: unset !important;
-  }
-
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .target-row { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .target-label { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+  .target-input { width: 80px; flex: unset !important; }
   .calc-btn {
-    width: 100%;
-    padding: 13px;
+    width: 100%; padding: 13px;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    transition: opacity 0.2s, transform 0.1s;
+    border: none; border-radius: 12px; color: #fff; font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.1s;
   }
   .calc-btn:hover { opacity: 0.9; }
   .calc-btn:active { transform: scale(0.98); }
-
   .result {
-    margin-top: 20px;
-    border-radius: 14px;
-    padding: 20px;
-    display: none;
-    border: 1px solid;
-    animation: fadeUp 0.3s ease;
+    margin-top: 20px; border-radius: 14px; padding: 20px; display: none;
+    border: 1px solid; animation: fadeUp 0.3s ease;
   }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .result.good  { background: rgba(34,217,138,0.07); border-color: rgba(34,217,138,0.25); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  .result.good { background: rgba(34,217,138,0.07); border-color: rgba(34,217,138,0.25); }
   .result.warn  { background: rgba(255,209,102,0.07); border-color: rgba(255,209,102,0.25); }
   .result.bad   { background: rgba(255,95,126,0.07);  border-color: rgba(255,95,126,0.25); }
-
-  .result-score {
-    font-family: 'Space Mono', monospace;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
+  .result-score { font-family: 'Space Mono', monospace; font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
   .result.good .result-score { color: var(--green); }
   .result.warn .result-score { color: var(--yellow); }
   .result.bad  .result-score { color: var(--red); }
-
-  .result-label {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .result-note {
-    margin-top: 10px;
-    font-size: 13px;
-    font-weight: 600;
-  }
+  .result-label { font-size: 12px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .result-note { margin-top: 10px; font-size: 13px; font-weight: 600; }
   .result.good .result-note { color: var(--green); }
   .result.warn .result-note { color: var(--yellow); }
   .result.bad  .result-note { color: var(--red); }
-
   .breakdown {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted);
+    display: flex; flex-direction: column; gap: 4px;
   }
   .breakdown span { color: var(--text); }
+  .col-headers { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; padding-left: 60px; }
+  .col-h { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; flex: 1; text-align: center; }
+  .col-h.slash-h { width: 12px; flex: unset; }
+  .col-h.pct-h { width: 46px; flex: unset; text-align: right; }
+  .col-h.w-h { width: 44px; flex: unset; text-align: center; }
 </style>
 </head>
 <body>
@@ -228,21 +101,39 @@
   <div class="subtitle">40% ASSESSMENTS · 60% EXAM</div>
 
   <div class="section-label">Assessments</div>
+
+  <div class="col-headers">
+    <div class="col-h">Score</div>
+    <div class="col-h slash-h"></div>
+    <div class="col-h">Out of</div>
+    <div class="col-h pct-h">%</div>
+    <div class="col-h w-h">Weight</div>
+  </div>
+
   <div class="inputs-group">
     <div class="input-row">
       <div class="input-tag">RBA</div>
+      <input type="number" id="rba_s" placeholder="score" min="0" oninput="updatePct('rba')">
+      <div class="slash">/</div>
+      <input type="number" id="rba_m" placeholder="max" min="1" oninput="updatePct('rba')">
+      <div class="pct-display" id="rba_pct">—</div>
       <div class="weight-badge">×20%</div>
-      <input type="number" id="rba" placeholder="0–100" min="0" max="100">
     </div>
     <div class="input-row">
       <div class="input-tag">Test 1</div>
+      <input type="number" id="t1_s" placeholder="score" min="0" oninput="updatePct('t1')">
+      <div class="slash">/</div>
+      <input type="number" id="t1_m" placeholder="max" min="1" oninput="updatePct('t1')">
+      <div class="pct-display" id="t1_pct">—</div>
       <div class="weight-badge">×40%</div>
-      <input type="number" id="t1" placeholder="0–100" min="0" max="100">
     </div>
     <div class="input-row">
       <div class="input-tag">Test 2</div>
+      <input type="number" id="t2_s" placeholder="score" min="0" oninput="updatePct('t2')">
+      <div class="slash">/</div>
+      <input type="number" id="t2_m" placeholder="max" min="1" oninput="updatePct('t2')">
+      <div class="pct-display" id="t2_pct">—</div>
       <div class="weight-badge">×40%</div>
-      <input type="number" id="t2" placeholder="0–100" min="0" max="100">
     </div>
   </div>
 
@@ -264,22 +155,39 @@
 </div>
 
 <script>
-function calculate() {
-  const rba = parseFloat(document.getElementById('rba').value);
-  const t1  = parseFloat(document.getElementById('t1').value);
-  const t2  = parseFloat(document.getElementById('t2').value);
-  const tgt = parseFloat(document.getElementById('target').value);
+function updatePct(id) {
+  const s = parseFloat(document.getElementById(id + '_s').value);
+  const m = parseFloat(document.getElementById(id + '_m').value);
+  const el = document.getElementById(id + '_pct');
+  if (!isNaN(s) && !isNaN(m) && m > 0) {
+    el.textContent = (s / m * 100).toFixed(1) + '%';
+  } else {
+    el.textContent = '—';
+  }
+}
 
+function getPct(id) {
+  const s = parseFloat(document.getElementById(id + '_s').value);
+  const m = parseFloat(document.getElementById(id + '_m').value);
+  if (isNaN(s) || isNaN(m) || m <= 0) return null;
+  return (s / m) * 100;
+}
+
+function calculate() {
+  const rba = getPct('rba');
+  const t1  = getPct('t1');
+  const t2  = getPct('t2');
+  const tgt = parseFloat(document.getElementById('target').value);
   const resultBox = document.getElementById('result');
 
-  if ([rba, t1, t2, tgt].some(isNaN)) {
+  if ([rba, t1, t2].some(v => v === null) || isNaN(tgt)) {
     resultBox.style.display = 'none';
     return;
   }
 
-  const assessTotal = 0.2 * rba + 0.4 * t1 + 0.4 * t2;
+  const assessTotal  = 0.2 * rba + 0.4 * t1 + 0.4 * t2;
   const assessContrib = 0.4 * assessTotal;
-  const examNeeded = (tgt - assessContrib) / 0.6;
+  const examNeeded   = (tgt - assessContrib) / 0.6;
 
   resultBox.style.display = 'block';
   resultBox.className = 'result';
@@ -295,18 +203,19 @@ function calculate() {
   } else if (examNeeded < 0) {
     scoreEl.textContent = '0%';
     resultBox.classList.add('good');
-    noteEl.textContent = "You've already hit your target — just show up!";
+    noteEl.textContent = "Already hit your target — just show up!";
   } else {
     scoreEl.textContent = examNeeded.toFixed(1) + '%';
-    if (examNeeded <= 50)       { resultBox.classList.add('good'); noteEl.textContent = "Very achievable. You're in a good spot."; }
-    else if (examNeeded <= 75)  { resultBox.classList.add('warn'); noteEl.textContent = "Doable, but study up."; }
-    else                        { resultBox.classList.add('bad');  noteEl.textContent = "Tough ask — put in the hours."; }
+    if      (examNeeded <= 50) { resultBox.classList.add('good'); noteEl.textContent = "Very achievable. You're in a good spot."; }
+    else if (examNeeded <= 75) { resultBox.classList.add('warn'); noteEl.textContent = "Doable, but study up."; }
+    else                       { resultBox.classList.add('bad');  noteEl.textContent = "Tough ask — put in the hours."; }
   }
 
   breakEl.innerHTML = `
+    <div>RBA &nbsp;<span>${rba.toFixed(1)}%</span> &nbsp;· T1 &nbsp;<span>${t1.toFixed(1)}%</span> &nbsp;· T2 &nbsp;<span>${t2.toFixed(1)}%</span></div>
     <div>Assessment total &nbsp;<span>${assessTotal.toFixed(1)}%</span></div>
     <div>Assessment contribution (×40%) &nbsp;<span>${assessContrib.toFixed(1)} pts</span></div>
-    <div>Exam contribution needed (×60%) &nbsp;<span>${Math.max(0, examNeeded * 0.6).toFixed(1)} pts</span></div>
+    <div>Exam needed &nbsp;<span>${Math.max(0,examNeeded).toFixed(1)}%</span> &nbsp;→ contributes &nbsp;<span>${(Math.max(0,examNeeded)*0.6).toFixed(1)} pts</span></div>
   `;
 }
 
