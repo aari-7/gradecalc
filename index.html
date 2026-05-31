@@ -20,7 +20,7 @@
   }
   .card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-    padding: 36px 32px; width: 100%; max-width: 460px;
+    padding: 36px 32px; width: 100%; max-width: 500px;
     box-shadow: 0 24px 64px rgba(0,0,0,0.5);
   }
   .title {
@@ -28,35 +28,65 @@
     background: linear-gradient(90deg, var(--accent), var(--accent2));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .subtitle { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 28px; }
-  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .subtitle { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 24px; }
+
+  /* Top-level split */
+  .split-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    background: rgba(79,140,255,0.05); border: 1px solid rgba(79,140,255,0.15);
+    border-radius: 12px; padding: 12px 14px;
+  }
+  .split-label { font-size: 12px; font-weight: 700; color: var(--muted); flex: 1; }
+  .split-item { display: flex; align-items: center; gap: 6px; }
+  .split-name { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .split-input {
+    width: 52px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-family: 'Space Mono', monospace;
+    font-size: 13px; padding: 5px 8px; outline: none; text-align: center;
+    transition: border-color 0.2s; -moz-appearance: textfield;
+  }
+  .split-input:focus { border-color: var(--accent); }
+  .split-pct { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); }
+  .split-warn { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--red); margin-left: 6px; display: none; }
+
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+
+  .col-headers { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .ch { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+
   .inputs-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
   .input-row { display: flex; align-items: center; gap: 8px; }
+
   .input-tag { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); width: 52px; flex-shrink: 0; }
-  .weight-badge {
-    font-family: 'Space Mono', monospace; font-size: 10px;
-    background: rgba(79,140,255,0.12); color: var(--accent);
-    border: 1px solid rgba(79,140,255,0.2); border-radius: 6px;
-    padding: 2px 7px; width: 44px; text-align: center; flex-shrink: 0;
-  }
   .slash { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 16px; flex-shrink: 0; }
-  .pct-display {
-    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent);
-    width: 46px; text-align: right; flex-shrink: 0;
-  }
+  .x-sym { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 12px; flex-shrink: 0; }
+  .pct-display { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); width: 46px; text-align: right; flex-shrink: 0; }
+
   input[type="number"] {
     flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-    color: var(--text); font-family: 'Space Mono', monospace; font-size: 14px;
-    padding: 9px 10px; outline: none; transition: border-color 0.2s;
-    -moz-appearance: textfield; min-width: 0;
+    color: var(--text); font-family: 'Space Mono', monospace; font-size: 13px;
+    padding: 9px 8px; outline: none; transition: border-color 0.2s;
+    -moz-appearance: textfield; min-width: 0; text-align: center;
   }
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
   input[type="number"]:focus { border-color: var(--accent); }
+
+  .weight-input {
+    width: 52px; flex: unset !important;
+    background: rgba(162,89,255,0.08) !important;
+    border-color: rgba(162,89,255,0.25) !important;
+    color: var(--accent2) !important;
+  }
+  .weight-input:focus { border-color: var(--accent2) !important; }
+
+  .weight-warn { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--red); margin-top: 2px; display: none; text-align: right; }
+
   .divider { height: 1px; background: var(--border); margin: 20px 0; }
   .target-row { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
   .target-label { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
   .target-input { width: 80px; flex: unset !important; }
+
   .calc-btn {
     width: 100%; padding: 13px;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -65,6 +95,7 @@
   }
   .calc-btn:hover { opacity: 0.9; }
   .calc-btn:active { transform: scale(0.98); }
+
   .result {
     margin-top: 20px; border-radius: 14px; padding: 20px; display: none;
     border: 1px solid; animation: fadeUp 0.3s ease;
@@ -88,26 +119,40 @@
     display: flex; flex-direction: column; gap: 4px;
   }
   .breakdown span { color: var(--text); }
-  .col-headers { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; padding-left: 60px; }
-  .col-h { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; flex: 1; text-align: center; }
-  .col-h.slash-h { width: 12px; flex: unset; }
-  .col-h.pct-h { width: 46px; flex: unset; text-align: right; }
-  .col-h.w-h { width: 44px; flex: unset; text-align: center; }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="title">Exam Calculator</div>
-  <div class="subtitle">40% ASSESSMENTS · 60% EXAM</div>
+  <div class="subtitle">ALL WEIGHTS EDITABLE</div>
+
+  <!-- Top-level split -->
+  <div class="split-row">
+    <div class="split-label">Overall split</div>
+    <div class="split-item">
+      <div class="split-name">Assess.</div>
+      <input type="number" class="split-input" id="w_assess" value="40" min="0" max="100" oninput="syncSplit('assess')">
+      <div class="split-pct">%</div>
+    </div>
+    <div class="split-item" style="margin-left:10px">
+      <div class="split-name">Exam</div>
+      <input type="number" class="split-input" id="w_exam" value="60" min="0" max="100" oninput="syncSplit('exam')">
+      <div class="split-pct">%</div>
+    </div>
+    <div class="split-warn" id="split_warn">must = 100%</div>
+  </div>
 
   <div class="section-label">Assessments</div>
 
+  <!-- Column headers -->
   <div class="col-headers">
-    <div class="col-h">Score</div>
-    <div class="col-h slash-h"></div>
-    <div class="col-h">Out of</div>
-    <div class="col-h pct-h">%</div>
-    <div class="col-h w-h">Weight</div>
+    <div class="ch" style="width:52px;flex-shrink:0"></div>
+    <div class="ch" style="flex:1">Score</div>
+    <div class="ch" style="width:12px;flex-shrink:0"></div>
+    <div class="ch" style="flex:1">Out of</div>
+    <div class="ch" style="width:46px;flex-shrink:0">%</div>
+    <div class="ch" style="width:12px;flex-shrink:0"></div>
+    <div class="ch" style="width:52px;flex-shrink:0">Weight</div>
   </div>
 
   <div class="inputs-group">
@@ -117,7 +162,8 @@
       <div class="slash">/</div>
       <input type="number" id="rba_m" placeholder="max" min="1" oninput="updatePct('rba')">
       <div class="pct-display" id="rba_pct">—</div>
-      <div class="weight-badge">×20%</div>
+      <div class="x-sym">×</div>
+      <input type="number" class="weight-input" id="w_rba" value="20" min="0" max="100" oninput="checkWeights()">
     </div>
     <div class="input-row">
       <div class="input-tag">Test 1</div>
@@ -125,7 +171,8 @@
       <div class="slash">/</div>
       <input type="number" id="t1_m" placeholder="max" min="1" oninput="updatePct('t1')">
       <div class="pct-display" id="t1_pct">—</div>
-      <div class="weight-badge">×40%</div>
+      <div class="x-sym">×</div>
+      <input type="number" class="weight-input" id="w_t1" value="40" min="0" max="100" oninput="checkWeights()">
     </div>
     <div class="input-row">
       <div class="input-tag">Test 2</div>
@@ -133,9 +180,11 @@
       <div class="slash">/</div>
       <input type="number" id="t2_m" placeholder="max" min="1" oninput="updatePct('t2')">
       <div class="pct-display" id="t2_pct">—</div>
-      <div class="weight-badge">×40%</div>
+      <div class="x-sym">×</div>
+      <input type="number" class="weight-input" id="w_t2" value="40" min="0" max="100" oninput="checkWeights()">
     </div>
   </div>
+  <div class="weight-warn" id="weight_warn">Assessment weights must add up to 100%</div>
 
   <div class="divider"></div>
 
@@ -155,15 +204,32 @@
 </div>
 
 <script>
+function syncSplit(changed) {
+  const a = document.getElementById('w_assess');
+  const e = document.getElementById('w_exam');
+  const warn = document.getElementById('split_warn');
+  const av = parseFloat(a.value) || 0;
+  const ev = parseFloat(e.value) || 0;
+  if (changed === 'assess') e.value = Math.max(0, 100 - av);
+  else a.value = Math.max(0, 100 - ev);
+  const total = parseFloat(a.value) + parseFloat(e.value);
+  warn.style.display = Math.abs(total - 100) > 0.01 ? 'inline' : 'none';
+}
+
+function checkWeights() {
+  const w1 = parseFloat(document.getElementById('w_rba').value) || 0;
+  const w2 = parseFloat(document.getElementById('w_t1').value) || 0;
+  const w3 = parseFloat(document.getElementById('w_t2').value) || 0;
+  const warn = document.getElementById('weight_warn');
+  const total = w1 + w2 + w3;
+  warn.style.display = Math.abs(total - 100) > 0.01 ? 'block' : 'none';
+}
+
 function updatePct(id) {
   const s = parseFloat(document.getElementById(id + '_s').value);
   const m = parseFloat(document.getElementById(id + '_m').value);
   const el = document.getElementById(id + '_pct');
-  if (!isNaN(s) && !isNaN(m) && m > 0) {
-    el.textContent = (s / m * 100).toFixed(1) + '%';
-  } else {
-    el.textContent = '—';
-  }
+  el.textContent = (!isNaN(s) && !isNaN(m) && m > 0) ? (s/m*100).toFixed(1)+'%' : '—';
 }
 
 function getPct(id) {
@@ -181,13 +247,18 @@ function calculate() {
   const resultBox = document.getElementById('result');
 
   if ([rba, t1, t2].some(v => v === null) || isNaN(tgt)) {
-    resultBox.style.display = 'none';
-    return;
+    resultBox.style.display = 'none'; return;
   }
 
-  const assessTotal  = 0.2 * rba + 0.4 * t1 + 0.4 * t2;
-  const assessContrib = 0.4 * assessTotal;
-  const examNeeded   = (tgt - assessContrib) / 0.6;
+  const wA  = (parseFloat(document.getElementById('w_assess').value) || 0) / 100;
+  const wE  = (parseFloat(document.getElementById('w_exam').value)   || 0) / 100;
+  const wR  = (parseFloat(document.getElementById('w_rba').value)    || 0) / 100;
+  const wT1 = (parseFloat(document.getElementById('w_t1').value)     || 0) / 100;
+  const wT2 = (parseFloat(document.getElementById('w_t2').value)     || 0) / 100;
+
+  const assessTotal   = wR * rba + wT1 * t1 + wT2 * t2;
+  const assessContrib = wA * assessTotal;
+  const examNeeded    = wE > 0 ? (tgt - assessContrib) / wE : null;
 
   resultBox.style.display = 'block';
   resultBox.className = 'result';
@@ -196,7 +267,11 @@ function calculate() {
   const noteEl  = document.getElementById('result-note');
   const breakEl = document.getElementById('breakdown');
 
-  if (examNeeded > 100) {
+  if (examNeeded === null) {
+    scoreEl.textContent = 'N/A';
+    resultBox.classList.add('bad');
+    noteEl.textContent = "Exam weight is 0% — check your split.";
+  } else if (examNeeded > 100) {
     scoreEl.textContent = '>100%';
     resultBox.classList.add('bad');
     noteEl.textContent = "Not achievable — lower your target.";
@@ -212,10 +287,10 @@ function calculate() {
   }
 
   breakEl.innerHTML = `
-    <div>RBA &nbsp;<span>${rba.toFixed(1)}%</span> &nbsp;· T1 &nbsp;<span>${t1.toFixed(1)}%</span> &nbsp;· T2 &nbsp;<span>${t2.toFixed(1)}%</span></div>
-    <div>Assessment total &nbsp;<span>${assessTotal.toFixed(1)}%</span></div>
-    <div>Assessment contribution (×40%) &nbsp;<span>${assessContrib.toFixed(1)} pts</span></div>
-    <div>Exam needed &nbsp;<span>${Math.max(0,examNeeded).toFixed(1)}%</span> &nbsp;→ contributes &nbsp;<span>${(Math.max(0,examNeeded)*0.6).toFixed(1)} pts</span></div>
+    <div>RBA <span>${rba.toFixed(1)}%</span> · T1 <span>${t1.toFixed(1)}%</span> · T2 <span>${t2.toFixed(1)}%</span></div>
+    <div>Weighted assessment total &nbsp;<span>${assessTotal.toFixed(1)}%</span></div>
+    <div>Assessment contribution (×${(wA*100).toFixed(0)}%) &nbsp;<span>${assessContrib.toFixed(1)} pts</span></div>
+    <div>Exam needed &nbsp;<span>${examNeeded !== null ? Math.max(0,examNeeded).toFixed(1)+'%' : 'N/A'}</span></div>
   `;
 }
 
